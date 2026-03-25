@@ -36,7 +36,7 @@ const MapControls = () => {
       >
         📍 Venue
       </button>
-      <div className="flex flex-col gap-1">
+      <div className="flex sm:flex-col gap-1">
         <img
           src={image1}
           alt="Image 1"
