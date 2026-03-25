@@ -29,7 +29,7 @@ const MapControls = () => {
   };
 
   return (
-    <div className="absolute z-[1000] sm:top-4 bottom-16 right-4 flex flex-col items-end gap-1">
+    <div className="absolute z-[1000] sm:top-4 bottom-6 right-4 flex flex-col items-end gap-1">
       <button
         onClick={goToVenue}
         className="bg-blue-500 text-white px-3 py-1 rounded shadow-md"
