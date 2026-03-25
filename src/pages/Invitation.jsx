@@ -48,7 +48,7 @@ const COUPLE2 = {
   groom: "SUDAIS",
   Ginitial: "N",
   bride: "FATHIMA HIBA",
-  Binitial: "P",
+  Binitial: "T",
   groomShort: "Sudais",
   brideShort: "Hiba",
   accent: "#d4af37",
