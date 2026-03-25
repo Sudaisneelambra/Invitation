@@ -10,7 +10,12 @@ const PETALS = Array.from({ length: 40 }, (_, i) => ({
   size: rand(7, 18),
   rotate: rand(0, 360),
   drift: rand(-120, 120),
-  color: i % 3 === 0 ? "rgba(255,200,150,0.55)" : i % 3 === 1 ? "rgba(212,175,55,0.45)" : "rgba(200,230,200,0.4)",
+  color:
+    i % 3 === 0
+      ? "rgba(255,200,150,0.55)"
+      : i % 3 === 1
+        ? "rgba(212,175,55,0.45)"
+        : "rgba(200,230,200,0.4)",
 }));
 
 const FIREFLIES = Array.from({ length: 25 }, (_, i) => ({
@@ -74,130 +79,199 @@ function CoupleCard({ couple, side, revealed, delay }) {
         position: "relative",
         transition: "all 0.5s ease",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
-        boxShadow: hovered ? `0 20px 60px ${couple.glow}, 0 0 40px ${couple.accentSoft}0.1)` : "none",
+        boxShadow: hovered
+          ? `0 20px 60px ${couple.glow}, 0 0 40px ${couple.accentSoft}0.1)`
+          : "none",
         opacity: revealed ? 1 : 0,
         animation: revealed ? `fadeUp 1s ease ${delay}s both` : "none",
       }}
       className="w-[80%] sm:w-[90%]"
     >
       {/* Corner accents */}
-      {[["top","left"],["top","right"],["bottom","left"],["bottom","right"]].map(([v,h]) => (
-        <div key={v+h} style={{
-          position:"absolute",
-          [v]: -1, [h]: -1,
-          width: 32, height: 32,
-          borderTop: v==="top" ? `2px solid ${couple.accentSoft}0.7)` : "none",
-          borderBottom: v==="bottom" ? `2px solid ${couple.accentSoft}0.7)` : "none",
-          borderLeft: h==="left" ? `2px solid ${couple.accentSoft}0.7)` : "none",
-          borderRight: h==="right" ? `2px solid ${couple.accentSoft}0.7)` : "none",
-        }}/>
+      {[
+        ["top", "left"],
+        ["top", "right"],
+        ["bottom", "left"],
+        ["bottom", "right"],
+      ].map(([v, h]) => (
+        <div
+          key={v + h}
+          style={{
+            position: "absolute",
+            [v]: -1,
+            [h]: -1,
+            width: 32,
+            height: 32,
+            borderTop:
+              v === "top" ? `2px solid ${couple.accentSoft}0.7)` : "none",
+            borderBottom:
+              v === "bottom" ? `2px solid ${couple.accentSoft}0.7)` : "none",
+            borderLeft:
+              h === "left" ? `2px solid ${couple.accentSoft}0.7)` : "none",
+            borderRight:
+              h === "right" ? `2px solid ${couple.accentSoft}0.7)` : "none",
+          }}
+        />
       ))}
 
       {/* Label badge */}
-      <div style={{ textAlign:"center", marginBottom: 20 }}>
-        <span style={{
-          fontFamily:"'EB Garamond', serif",
-          fontSize: 12,
-          letterSpacing: 5,
-          textTransform:"uppercase",
-          color: `${couple.accentSoft}0.55)`,
-          borderBottom: `1px solid ${couple.accentSoft}0.25)`,
-          paddingBottom: 6,
-        }}>{couple.emoji} {couple.label}</span>
+      <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <span
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontSize: 12,
+            letterSpacing: 5,
+            textTransform: "uppercase",
+            color: `${couple.accentSoft}0.55)`,
+            borderBottom: `1px solid ${couple.accentSoft}0.25)`,
+            paddingBottom: 6,
+          }}
+        >
+          {couple.emoji} {couple.label}
+        </span>
       </div>
 
       {/* Groom name */}
-      <div style={{ textAlign:"center", marginBottom: 6 }}>
-        <p style={{
-          fontFamily:"'EB Garamond', serif",
-          fontSize: 10,
-          letterSpacing: 5,
-          textTransform:"uppercase",
-          color: `${couple.accentSoft}0.45)`,
-          marginBottom: 8,
-        }}>Groom</p>
-        <h2 style={{
-          fontFamily:"'Cinzel Decorative', serif",
-          fontSize: "clamp(22px, 2.2vw, 28px)",
-          fontWeight: 900,
-          background: `linear-gradient(90deg, ${couple.accent}, #fff8e7, ${couple.accent})`,
-          backgroundSize: "200% auto",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          animation: "shimmer 4s linear infinite",
-          lineHeight: 1.3,
-          letterSpacing: 1,
-        }}
-        ><span className={`${couple.groomShort == 'Shibil' ? 'mr-[16px]': "mr-2"}`}>{couple.groom}</span><span>{couple.Ginitial}</span></h2>
+      <div style={{ textAlign: "center", marginBottom: 6 }}>
+        <p
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontSize: 10,
+            letterSpacing: 5,
+            textTransform: "uppercase",
+            color: `${couple.accentSoft}0.45)`,
+            marginBottom: 8,
+          }}
+        >
+          Groom
+        </p>
+        <h2
+          style={{
+            fontFamily: "'Cinzel Decorative', serif",
+            fontSize: "clamp(22px, 2.2vw, 28px)",
+            fontWeight: 900,
+            background: `linear-gradient(90deg, ${couple.accent}, #fff8e7, ${couple.accent})`,
+            backgroundSize: "200% auto",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            animation: "shimmer 4s linear infinite",
+            lineHeight: 1.3,
+            letterSpacing: 1,
+          }}
+        >
+          <span
+            className={`${couple.groomShort == "Shibil" ? "mr-[16px]" : "mr-2"}`}
+          >
+            {couple.groom}
+          </span>
+          <span>{couple.Ginitial}</span>
+        </h2>
       </div>
 
       {/* Heart connector */}
-      <div style={{
-        textAlign:"center",
-        margin:"18px 0",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-        gap: 10,
-      }}>
-        <div style={{ flex:1, height:1, background:`linear-gradient(to right, transparent, ${couple.accentSoft}0.4))` }}/>
-        <span style={{
-          fontSize: 20,
-          animation:"heartbeat 2s ease-in-out infinite",
-          display:"inline-block",
-          filter:`drop-shadow(0 0 6px ${couple.glow})`,
-        }}>🤍</span>
-        <div style={{ flex:1, height:1, background:`linear-gradient(to left, transparent, ${couple.accentSoft}0.4))` }}/>
+      <div
+        style={{
+          textAlign: "center",
+          margin: "18px 0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 10,
+        }}
+      >
+        <div
+          style={{
+            flex: 1,
+            height: 1,
+            background: `linear-gradient(to right, transparent, ${couple.accentSoft}0.4))`,
+          }}
+        />
+        <span
+          style={{
+            fontSize: 20,
+            animation: "heartbeat 2s ease-in-out infinite",
+            display: "inline-block",
+            filter: `drop-shadow(0 0 6px ${couple.glow})`,
+          }}
+        >
+          🤍
+        </span>
+        <div
+          style={{
+            flex: 1,
+            height: 1,
+            background: `linear-gradient(to left, transparent, ${couple.accentSoft}0.4))`,
+          }}
+        />
       </div>
 
       {/* Bride name */}
-      <div style={{ textAlign:"center", marginBottom: 24 }}>
-        <p style={{
-          fontFamily:"'EB Garamond', serif",
-          fontSize: 10,
-          letterSpacing: 5,
-          textTransform:"uppercase",
-          color: `${couple.accentSoft}0.45)`,
-          marginBottom: 8,
-        }}>Bride</p>
-        <h2 style={{
-          fontFamily:"'Cinzel Decorative', serif",
-          fontSize: "clamp(22px, 2.2vw, 28px)",
-          fontWeight: 900,
-          background: `linear-gradient(90deg, ${couple.accent}, #fff8e7, ${couple.accent})`,
-          backgroundSize: "200% auto",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          animation: "shimmer 4s linear infinite 0.5s",
-          lineHeight: 1.3,
-          letterSpacing: 1,
-        }}><span className="mr-2">{couple.bride}</span><span>{couple.Binitial}</span></h2>
+      <div style={{ textAlign: "center", marginBottom: 24 }}>
+        <p
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontSize: 10,
+            letterSpacing: 5,
+            textTransform: "uppercase",
+            color: `${couple.accentSoft}0.45)`,
+            marginBottom: 8,
+          }}
+        >
+          Bride
+        </p>
+        <h2
+          style={{
+            fontFamily: "'Cinzel Decorative', serif",
+            fontSize: "clamp(22px, 2.2vw, 28px)",
+            fontWeight: 900,
+            background: `linear-gradient(90deg, ${couple.accent}, #fff8e7, ${couple.accent})`,
+            backgroundSize: "200% auto",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            animation: "shimmer 4s linear infinite 0.5s",
+            lineHeight: 1.3,
+            letterSpacing: 1,
+          }}
+        >
+          <span className="mr-2">{couple.bride}</span>
+          <span>{couple.Binitial}</span>
+        </h2>
       </div>
 
       {/* Origin tag */}
-      <div style={{ textAlign:"center", marginBottom: 28 }}>
-        <span style={{
-          fontFamily:"'EB Garamond', serif",
-          fontStyle:"italic",
-          fontSize: 14,
-          color: `${couple.accentSoft}0.45)`,
-          letterSpacing: 2,
-        }}>{couple.verse}</span>
+      <div style={{ textAlign: "center", marginBottom: 28 }}>
+        <span
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontStyle: "italic",
+            fontSize: 14,
+            color: `${couple.accentSoft}0.45)`,
+            letterSpacing: 2,
+          }}
+        >
+          {couple.verse}
+        </span>
       </div>
 
       {/* Divider */}
-      <div style={{
-        borderTop: `1px solid ${couple.accentSoft}0.12)`,
-        paddingTop: 24,
-        textAlign:"center",
-      }}>
-        <p style={{
-          fontFamily:"'Cormorant Garamond', serif",
-          fontStyle:"italic",
-          fontSize: 13,
-          color: `${couple.accentSoft}0.5)`,
-          lineHeight: 1.8,
-        }}>Two souls, one destiny. United in love across miles.</p>
+      <div
+        style={{
+          borderTop: `1px solid ${couple.accentSoft}0.12)`,
+          paddingTop: 24,
+          textAlign: "center",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontStyle: "italic",
+            fontSize: 13,
+            color: `${couple.accentSoft}0.5)`,
+            lineHeight: 1.8,
+          }}
+        >
+          Two souls, one destiny. United in love across miles.
+        </p>
       </div>
     </div>
   );
@@ -211,7 +285,9 @@ export default function Invitation() {
   const containerRef = useRef(null);
   const sparkleId = useRef(0);
 
-  useEffect(() => { setTimeout(() => setRevealed(true), 200); }, []);
+  useEffect(() => {
+    setTimeout(() => setRevealed(true), 200);
+  }, []);
 
   const handleMouseMove = useCallback((e) => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -221,12 +297,21 @@ export default function Invitation() {
     setMousePos({ x, y });
     if (Math.random() > 0.88) {
       const id = sparkleId.current++;
-      setSparkles(p => [...p.slice(-18), { id, x, y, size: rand(4,10), hue: Math.random()>0.5?"#d4af37":"#a8d5a2" }]);
-      setTimeout(() => setSparkles(p => p.filter(s => s.id !== id)), 700);
+      setSparkles((p) => [
+        ...p.slice(-18),
+        {
+          id,
+          x,
+          y,
+          size: rand(4, 10),
+          hue: Math.random() > 0.5 ? "#d4af37" : "#a8d5a2",
+        },
+      ]);
+      setTimeout(() => setSparkles((p) => p.filter((s) => s.id !== id)), 700);
     }
   }, []);
 
-    const handleTouchMove = useCallback((e) => {
+  const handleTouchMove = useCallback((e) => {
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
     const x = e.clientX - rect.left;
@@ -234,8 +319,17 @@ export default function Invitation() {
     setMousePos({ x, y });
     if (Math.random() > 0.88) {
       const id = sparkleId.current++;
-      setSparkles(p => [...p.slice(-18), { id, x, y, size: rand(4,10), hue: Math.random()>0.5?"#d4af37":"#a8d5a2" }]);
-      setTimeout(() => setSparkles(p => p.filter(s => s.id !== id)), 700);
+      setSparkles((p) => [
+        ...p.slice(-18),
+        {
+          id,
+          x,
+          y,
+          size: rand(4, 10),
+          hue: Math.random() > 0.5 ? "#d4af37" : "#a8d5a2",
+        },
+      ]);
+      setTimeout(() => setSparkles((p) => p.filter((s) => s.id !== id)), 700);
     }
   }, []);
 
@@ -245,8 +339,8 @@ export default function Invitation() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const id = Date.now();
-    setRipples(p => [...p.slice(-6), { id, x, y }]);
-    setTimeout(() => setRipples(p => p.filter(r => r.id !== id)), 1400);
+    setRipples((p) => [...p.slice(-6), { id, x, y }]);
+    setTimeout(() => setRipples((p) => p.filter((r) => r.id !== id)), 1400);
   }, []);
 
   return (
@@ -445,7 +539,7 @@ export default function Invitation() {
               marginBottom: 20,
             }}
           >
-           In the Name of Allah — إن شاء الل 
+            In the Name of Allah — إن شاء الل
           </p>
 
           {/* Main title */}
@@ -716,159 +810,63 @@ export default function Invitation() {
 
           {/* Date / Time / Venue row */}
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr auto 1fr auto 1fr",
-              gap: 16,
-              alignItems: "center",
-            }}
+            className="
+              flex justify-between  items-center sm:gap-4 gap-7 wrap sm:flex-nowrap sm:flex-row flex-col
+            "
           >
             {/* Date */}
-            <div style={{ textAlign: "center" }}>
-              <p
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontSize: 10,
-                  letterSpacing: 4,
-                  color: "rgba(212,175,55,0.4)",
-                  textTransform: "uppercase",
-                  marginBottom: 10,
-                }}
-              >
+            <div className="text-center">
+              <p className="font-[EB_Garamond] text-[10px] tracking-[4px] text-[rgba(212,175,55,0.4)] uppercase mb-2">
                 Date
               </p>
-              <p
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(28px,5vw,46px)",
-                  fontWeight: 300,
-                  color: "rgba(245,230,180,0.9)",
-                  lineHeight: 1,
-                }}
-              >
+
+              <p className="font-[Cormorant_Garamond] text-[clamp(28px,5vw,46px)] font-light text-[rgba(245,230,180,0.9)] leading-none">
                 25&nbsp;
-                <span 
-                style={{
-                  fontSize: "clamp(12px,5vw,20px)",
-                }}>Saturday</span>
+                <span className="text-[clamp(12px,5vw,20px)]">Saturday</span>
               </p>
-              <p
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontSize: 13,
-                  letterSpacing: 3,
-                  color: "rgba(212,175,55,0.6)",
-                  textTransform: "uppercase",
-                  marginTop: 4,
-                }}
-              >
+
+              <p className="font-[EB_Garamond] text-[13px] tracking-[3px] text-[rgba(212,175,55,0.6)] uppercase mt-1">
                 April
               </p>
-              <p
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontSize: 13,
-                  color: "rgba(212,175,55,0.4)",
-                  marginTop: 2,
-                }}
-              >
+
+              <p className="font-[EB_Garamond] text-[13px] text-[rgba(212,175,55,0.4)] mt-1">
                 2026
               </p>
-              
             </div>
 
-            <div
-              style={{
-                width: 1,
-                height: 80,
-                background:
-                  "linear-gradient(to bottom, transparent, rgba(212,175,55,0.3), transparent)",
-              }}
-            />
+            {/* Divider */}
+            <div className="hidden md:block w-[1px] h-[80px] bg-gradient-to-b from-transparent via-[rgba(212,175,55,0.3)] to-transparent" />
 
             {/* Time */}
-            <div style={{ textAlign: "center" }}>
-              <p
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontSize: 10,
-                  letterSpacing: 4,
-                  color: "rgba(212,175,55,0.4)",
-                  textTransform: "uppercase",
-                  marginBottom: 10,
-                }}
-              >
+            <div className="text-center">
+              <p className="font-[EB_Garamond] text-[10px] tracking-[4px] text-[rgba(212,175,55,0.4)] uppercase mb-2">
                 Time
               </p>
-              <p
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(22px,4vw,38px)",
-                  fontWeight: 300,
-                  color: "rgba(245,230,180,0.9)",
-                }}
-              >
+
+              <p className="font-[Cormorant_Garamond] text-[clamp(22px,4vw,38px)] font-light text-[rgba(245,230,180,0.9)]">
                 4:00 PM
               </p>
-              <p
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontSize: 12,
-                  letterSpacing: 2,
-                  color: "rgba(212,175,55,0.5)",
-                  textTransform: "uppercase",
-                  marginTop: 4,
-                }}
-              >
+
+              <p className="font-[EB_Garamond] text-[12px] tracking-[2px] text-[rgba(212,175,55,0.5)] uppercase mt-1">
                 Onwards
               </p>
             </div>
 
-            <div
-              style={{
-                width: 1,
-                height: 80,
-                background:
-                  "linear-gradient(to bottom, transparent, rgba(168,213,162,0.3), transparent)",
-              }}
-            />
+            {/* Divider */}
+            <div className="hidden md:block w-[1px] h-[80px] bg-gradient-to-b from-transparent via-[rgba(168,213,162,0.3)] to-transparent" />
 
             {/* Venue */}
-            <div style={{ textAlign: "center" }}>
-              <p
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontSize: 10,
-                  letterSpacing: 4,
-                  color: "rgba(212,175,55,0.4)",
-                  textTransform: "uppercase",
-                  marginBottom: 10,
-                }}
-              >
+            <div className="text-center">
+              <p className="font-[EB_Garamond] text-[10px] tracking-[4px] text-[rgba(212,175,55,0.4)] uppercase mb-2">
                 Venue
               </p>
-              <p
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "clamp(16px,2.5vw,22px)",
-                  fontWeight: 300,
-                  color: "rgba(245,230,180,0.85)",
-                  lineHeight: 1.4,
-                }}
-              >
+
+              <p className="font-[Cormorant_Garamond] text-[clamp(16px,2.5vw,22px)] font-light text-[rgba(245,230,180,0.85)] leading-relaxed">
                 Hill View Convention Center
               </p>
-              <p
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontStyle: "italic",
-                  fontSize: 14,
-                  color: "rgba(212,175,55,0.45)",
-                  marginTop: 6,
-                  letterSpacing: 1,
-                }}
-              >
-                Koorad,Wandoor
+
+              <p className="font-[EB_Garamond] italic text-[14px] text-[rgba(212,175,55,0.45)] mt-2 tracking-[1px]">
+                Koorad, Wandoor
               </p>
             </div>
           </div>
