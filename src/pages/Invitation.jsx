@@ -26,7 +26,7 @@ const FIREFLIES = Array.from({ length: 25 }, (_, i) => ({
 
 const COUPLE1 = {
   groom: "MUHAMMED SHIBIL N",
-  bride: "SAHNA SHERIN",
+  bride: "SAHNA SHERIN P",
   groomShort: "Shibil",
   brideShort: "Shahna",
   accent: "#a8d5a2",
