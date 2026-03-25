@@ -4,13 +4,19 @@ import "leaflet/dist/leaflet.css";
 import image1 from "/src/assets/Screenshot 2026-03-25 103230.png";
 import image2 from "/src/assets/Screenshot 2026-03-25 103252.png";
 import L from "leaflet";
-
+import { renderToString } from "react-dom/server";
+import { MapPin } from "lucide-react";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
   iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+});
+
+const customIcon = L.divIcon({
+  html: renderToString(<MapPin color="blue" size={28} /> ),
+  className: "",
 });
 const position = [11.215682399229676, 76.29675234071459]; 
 
@@ -91,6 +97,7 @@ const WeddingMap = () => {
           <Marker
             position={position}
             ref={markerRef}
+            icon={customIcon}
             eventHandlers={{ click: handleMapClick }}
           >
             <Popup autoClose={false} closeOnClick={false} closeButton={false}>
