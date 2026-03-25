@@ -46,7 +46,7 @@ const COUPLE2 = {
   accentSoft: "rgba(212,175,55,",
   glow: "rgba(212,175,55,0.35) ",
   label: "Second Union",
-  verse: "Manhappetty × Chembrashery",
+  verse: "Manhappetty × Chembrassery",
   emoji: "🌙",
 };
 
