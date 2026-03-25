@@ -26,9 +26,9 @@ const FIREFLIES = Array.from({ length: 25 }, (_, i) => ({
 
 const COUPLE1 = {
   groom: "MUHAMMED SHIBIL N",
-  bride: "SHAHANA SHERIN",
+  bride: "SAHNA SHERIN",
   groomShort: "Shibil",
-  brideShort: "Shahana",
+  brideShort: "Shahna",
   accent: "#a8d5a2",
   accentSoft: "rgba(168,213,162,",
   glow: "rgba(168,213,162,0.35)",
@@ -905,7 +905,7 @@ export default function Invitation() {
               },
               {
                 role: "Family of the Bride",
-                name: "Shahana Sherin",
+                name: "Sahna Sherin",
                 sub: "Parents & Relatives",
               },
               {
@@ -1004,7 +1004,7 @@ export default function Invitation() {
             }}
           >
             {[
-              { label: "RSVP — Shibil & Shahana", color: "rgba(212,175,55," },
+              { label: "RSVP — Shibil & Sahna", color: "rgba(212,175,55," },
               { label: "RSVP — Sudais & Hiba", color: "rgba(168,213,162," },
             ].map((btn, i) => (
               <button
