@@ -1004,8 +1004,8 @@ export default function Invitation() {
             }}
           >
             {[
-              { label: "RSVP — Shibil & Sahna", color: "rgba(212,175,55," },
-              { label: "RSVP — Sudais & Hiba", color: "rgba(168,213,162," },
+              { label: "RSVP — Shibil & Sahna", color: "rgba(168,213,162," },
+              { label: "RSVP — Sudais & Hiba", color: "rgba(212,175,55," },
             ].map((btn, i) => (
               <button
                 key={i}

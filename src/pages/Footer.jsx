@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import image1 from "/src/assets/Screenshot 2026-03-25 103230.png";
+import image2 from "/src/assets/Screenshot 2026-03-25 103252.png";
 
 const position = [11.215682399229676, 76.29675234071459]; 
 
@@ -22,12 +24,12 @@ const MapControls = () => {
       </button>
       <div className="flex flex-col gap-1">
         <img
-          src="/src/assets/Screenshot 2026-03-25 103230.png"
+          src={image1}
           alt=""
           className="w-[130px] sm:w-[220px] rounded-md"
         />
         <img
-          src="/src/assets/Screenshot 2026-03-25 103252.png"
+          src={image2}
           alt=""
           className="w-[130px] sm:w-[220px] rounded-md"
         />
