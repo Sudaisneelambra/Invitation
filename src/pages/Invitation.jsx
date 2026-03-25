@@ -539,7 +539,7 @@ export default function Invitation() {
               marginBottom: 20,
             }}
           >
-            In the Name of Allah — إن شاء الل
+            In the Name of Allah — إن شاء الله
           </p>
 
           {/* Main title */}
