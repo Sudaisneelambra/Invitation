@@ -4,17 +4,15 @@ import "leaflet/dist/leaflet.css";
 import image1 from "/src/assets/Screenshot 2026-03-25 103230.png";
 import image2 from "/src/assets/Screenshot 2026-03-25 103252.png";
 import L from "leaflet";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-const position = [11.215682399229676, 76.29675234071459]; 
 
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
+const position = [11.215682399229676, 76.29675234071459]; 
 
 // 🔹 Controls
 const MapControls = () => {
