@@ -25,8 +25,10 @@ const FIREFLIES = Array.from({ length: 25 }, (_, i) => ({
 }));
 
 const COUPLE1 = {
-  groom: "MUHAMMED SHIBIL N",
-  bride: "SAHNA SHERIN P",
+  groom: "MUHAMMED SHIBIL",
+  Ginitial: "N",
+  bride: "SAHNA SHERIN",
+  Binitial: "P",
   groomShort: "Shibil",
   brideShort: "Shahna",
   accent: "#a8d5a2",
@@ -38,8 +40,10 @@ const COUPLE1 = {
 };
 
 const COUPLE2 = {
-  groom: "SUDAIS N",
-  bride: "FATHIMA HIBA T",
+  groom: "SUDAIS",
+  Ginitial: "N",
+  bride: "FATHIMA HIBA",
+  Binitial: "P",
   groomShort: "Sudais",
   brideShort: "Hiba",
   accent: "#d4af37",
@@ -123,7 +127,8 @@ function CoupleCard({ couple, side, revealed, delay }) {
           animation: "shimmer 4s linear infinite",
           lineHeight: 1.3,
           letterSpacing: 1,
-        }}>{couple.groom}</h2>
+        }}
+        ><span className={`${couple.groomShort == 'Shibil' ? 'mr-[16px]': "mr-2"}`}>{couple.groom}</span><span>{couple.Ginitial}</span></h2>
       </div>
 
       {/* Heart connector */}
@@ -166,7 +171,7 @@ function CoupleCard({ couple, side, revealed, delay }) {
           animation: "shimmer 4s linear infinite 0.5s",
           lineHeight: 1.3,
           letterSpacing: 1,
-        }}>{couple.bride}</h2>
+        }}><span className="mr-2">{couple.bride}</span><span>{couple.Binitial}</span></h2>
       </div>
 
       {/* Origin tag */}
@@ -741,7 +746,11 @@ export default function Invitation() {
                   lineHeight: 1,
                 }}
               >
-                25
+                25&nbsp;
+                <span 
+                style={{
+                  fontSize: "clamp(12px,5vw,20px)",
+                }}>Saturday</span>
               </p>
               <p
                 style={{
@@ -765,6 +774,7 @@ export default function Invitation() {
               >
                 2026
               </p>
+              
             </div>
 
             <div
@@ -905,7 +915,7 @@ export default function Invitation() {
               },
               {
                 role: "Family of the Bride",
-                name: "Sahna Sherin",
+                name: "Sahna Sherin P",
                 sub: "Parents & Relatives",
               },
               {
